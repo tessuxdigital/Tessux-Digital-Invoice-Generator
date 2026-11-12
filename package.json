@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Automated invoice generator and management system for Tessux Digital",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js",
-    "serve": "node server.js"
+    "start": "node scripts/server.js",
+    "dev": "node scripts/server.js",
+    "serve": "node scripts/server.js"
   },
   "keywords": [
     "invoice",

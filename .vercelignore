@@ -1,5 +1,5 @@
 # Exclude local Node server and container files from Vercel static deployment
+scripts/
 server.js
 Dockerfile
 docker-compose.yml
-
