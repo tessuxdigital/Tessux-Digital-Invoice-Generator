@@ -67,10 +67,14 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`\n======================================================`);
-  console.log(`🚀 Tessux Digital Invoice Engine running on:`);
-  console.log(`   http://localhost:${PORT}`);
-  console.log(`======================================================\n`);
-});
+if (require.main === module) {
+  server.listen(PORT, () => {
+    console.log(`\n======================================================`);
+    console.log(`🚀 Tessux Digital Invoice Engine running on:`);
+    console.log(`   http://localhost:${PORT}`);
+    console.log(`======================================================\n`);
+  });
+}
+
+module.exports = server;
 

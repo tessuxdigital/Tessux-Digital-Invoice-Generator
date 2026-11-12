@@ -2,7 +2,6 @@
   "name": "tessux-digital-invoice-template",
   "version": "1.0.0",
   "description": "Automated invoice generator and management system for Tessux Digital",
-  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
