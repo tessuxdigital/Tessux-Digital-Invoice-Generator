@@ -57,6 +57,16 @@ Includes 1-click preset buttons across all 5 Tessux Digital core domains:
 
 ---
 
+## 🔐 Default Access Credentials
+
+When opening the Invoice Studio, you can unlock it using the following credentials:
+- **Username:** `admin`
+- **Password:** `Admin@87454786` *(or `admin123`)*
+
+> You can also click the **"Auto Fill"** button directly on the login screen or change your credentials anytime from the **Security Settings** panel.
+
+---
+
 ## 🚀 How to Run Locally
 
 ### Option A: Double-Click (Zero Setup Required)

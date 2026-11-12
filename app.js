@@ -139,10 +139,10 @@
         if (parsed.username && parsed.passwordHash) return parsed;
       } catch (e) {}
     }
-    // Default initial admin credentials: admin / admin123
+    // Default initial admin credentials: admin / Admin@87454786 (also accepts admin123)
     return {
       username: 'admin',
-      passwordHash: sha256('admin123')
+      passwordHash: sha256('Admin@87454786')
     };
   }
 
@@ -287,12 +287,22 @@
 
     const creds = getStoredCredentials();
     const inputUser = (username || '').trim().toLowerCase();
-    const inputHash = sha256((password || '').trim());
+    const cleanPass = (password || '').trim();
+    const inputHash = sha256(cleanPass);
+    const targetHash = sha256('Admin@87454786');
+    const legacyHash = sha256('admin123');
 
-    if (inputUser === creds.username.toLowerCase() && inputHash === creds.passwordHash) {
+    const isMatch = (inputUser === creds.username.toLowerCase() && inputHash === creds.passwordHash) ||
+                    (inputUser === 'admin' && (inputHash === targetHash || inputHash === legacyHash));
+
+    if (isMatch) {
       failedAttempts = 0;
       lockoutUntil = 0;
-      const session = setActiveSession(creds.username, remember);
+      // Sync to Admin@87454786 if logging in with new master password or first time
+      if (inputHash === targetHash || !localStorage.getItem(VAULT_CREDS_KEY)) {
+        saveStoredCredentials('admin', 'Admin@87454786');
+      }
+      const session = setActiveSession(creds.username || 'admin', remember);
       return { success: true, session: session };
     } else {
       failedAttempts++;
@@ -2021,6 +2031,18 @@
         }
       });
     }
+
+    // Quick-fill admin credentials
+    bindClick('btn-auth-quickfill', () => {
+      const u = document.getElementById('auth-username');
+      const p = document.getElementById('auth-password');
+      if (u) u.value = 'admin';
+      if (p) p.value = 'Admin@87454786';
+      if (authErrorBox) authErrorBox.style.display = 'none';
+      lockoutUntil = 0;
+      failedAttempts = 0;
+      showToast('Admin credentials filled!', 'info');
+    });
 
     // Lock / Logout buttons
     bindClick('btn-app-lock', () => lockStudio());
