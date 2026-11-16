@@ -517,6 +517,7 @@
 
   // --- UNIT TYPE LABELS ---
   const UNIT_LABELS = {
+    none: "None",
     fixed: "Fixed Scope",
     milestone: "Milestone",
     month: "Month(s)",
@@ -810,33 +811,47 @@
 
   // --- CALCULATION LOGIC ---
   function computeTotals() {
-    let subtotal = 0;
+    let grossSubtotal = 0;
+    let lineDiscountTotal = 0;
+
     const computedItems = invoice.items.map(item => {
-      const qty = parseFloat(item.qty) || 0;
+      const rawQty = item.qty;
+      const qty = (rawQty === '' || rawQty === null || rawQty === undefined || isNaN(parseFloat(rawQty)) || parseFloat(rawQty) <= 0) ? 1 : parseFloat(rawQty);
       const rate = parseFloat(item.rate) || 0;
-      const disc = parseFloat(item.discount) || 0;
+      const disc = Math.max(0, Math.min(100, parseFloat(item.discount) || 0));
       const base = qty * rate;
       const itemDiscAmount = base * (disc / 100);
       const total = base - itemDiscAmount;
-      subtotal += total;
+
+      grossSubtotal += base;
+      lineDiscountTotal += itemDiscAmount;
+
       return {
         ...item,
         qty,
         rate,
         discount: disc,
+        lineBase: base,
+        lineDiscAmount: itemDiscAmount,
         lineTotal: total
       };
     });
 
-    let discountAmount = 0;
+    const netLineSubtotal = Math.max(0, grossSubtotal - lineDiscountTotal);
+
+    let overallDiscountAmount = 0;
     const discVal = parseFloat(invoice.overallDiscountValue) || 0;
-    if (invoice.overallDiscountType === 'percent') {
-      discountAmount = subtotal * (discVal / 100);
-    } else {
-      discountAmount = Math.min(discVal, subtotal);
+    if (discVal > 0) {
+      if (invoice.overallDiscountType === 'percent') {
+        overallDiscountAmount = netLineSubtotal * (discVal / 100);
+      } else {
+        overallDiscountAmount = Math.min(discVal, netLineSubtotal);
+      }
     }
 
-    const taxableAmount = Math.max(0, subtotal - discountAmount);
+    const totalDiscountAmount = lineDiscountTotal + overallDiscountAmount;
+    const subtotal = grossSubtotal;
+    const taxableAmount = Math.max(0, grossSubtotal - totalDiscountAmount);
 
     let cgst = 0;
     let sgst = 0;
@@ -877,7 +892,7 @@
     return {
       items: computedItems,
       subtotal,
-      discountAmount,
+      discountAmount: totalDiscountAmount,
       taxableAmount,
       cgst,
       sgst,
@@ -1075,9 +1090,10 @@
     const cur = CURRENCIES[invoice.currency] || CURRENCIES.INR;
 
     invoice.items.forEach((item, index) => {
-      const qty = parseFloat(item.qty) || 0;
+      const rawQty = item.qty;
+      const qty = (rawQty === '' || rawQty === null || rawQty === undefined || isNaN(parseFloat(rawQty)) || parseFloat(rawQty) <= 0) ? 1 : parseFloat(rawQty);
       const rate = parseFloat(item.rate) || 0;
-      const disc = parseFloat(item.discount) || 0;
+      const disc = Math.max(0, Math.min(100, parseFloat(item.discount) || 0));
       const lineTotal = (qty * rate) * (1 - disc / 100);
 
       const row = document.createElement('div');
@@ -1098,6 +1114,7 @@
           <div class="item-unit-col">
             <label class="item-field-label">Billing Unit</label>
             <select class="select-field item-unittype-select" data-index="${index}" data-field="unitType">
+              <option value="none" ${item.unitType === 'none' ? 'selected' : ''}>None</option>
               <option value="fixed" ${item.unitType === 'fixed' ? 'selected' : ''}>Fixed Scope</option>
               <option value="milestone" ${item.unitType === 'milestone' ? 'selected' : ''}>Milestone</option>
               <option value="month" ${item.unitType === 'month' ? 'selected' : ''}>Monthly</option>
@@ -1137,7 +1154,7 @@
     const wordsEl = document.getElementById('summary-words');
 
     if (subtotalEl) subtotalEl.textContent = formatMoney(totals.subtotal, invoice.currency);
-    if (discEl) discEl.textContent = '- ' + formatMoney(totals.discountAmount, invoice.currency);
+    if (discEl) discEl.textContent = totals.discountAmount > 0 ? ('- ' + formatMoney(totals.discountAmount, invoice.currency)) : '₹0.00';
     if (taxEl) taxEl.textContent = '+ ' + formatMoney(totals.taxTotal, invoice.currency);
     if (totalEl) totalEl.textContent = formatMoney(totals.grandTotal, invoice.currency);
     if (wordsEl) wordsEl.textContent = totals.words;
@@ -1145,6 +1162,7 @@
 
   function formatUnitDisplay(item) {
     const type = item.unitType || 'fixed';
+    if (type === 'none') return '';
     const qty = parseFloat(item.qty) || 1;
 
     switch (type) {
@@ -1174,13 +1192,13 @@
   }
 
   function formatDate(dStr) {
-    if (!dStr || !String(dStr).trim()) return '-';
+    if (!dStr || !String(dStr).trim()) return '';
     try {
       const d = new Date(dStr);
-      if (isNaN(d.getTime())) return '-';
+      if (isNaN(d.getTime())) return '';
       return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
     } catch (e) {
-      return '-';
+      return '';
     }
   }
 
@@ -1261,16 +1279,25 @@
       }
     }
 
-    // Table Headers based on SAC toggle
+    // Determine whether any deliverable item has a visible billing unit
+    const showUnitCol = totals.items.some(item => item.unitType && item.unitType !== 'none');
+
+    // Determine whether any deliverable item has a discount
+    const showDiscCol = totals.items.some(item => (parseFloat(item.discount) || 0) > 0);
+
+    // Determine whether SAC column should be shown
+    const showSacCol = !!(invoice.enableSac && totals.items.some(item => cleanText(item.sac)));
+
+    // Table Headers based on SAC toggle, Unit visibility, and Discount visibility
     const tableHeaderHtml = `
       <thead>
         <tr>
           <th class="th-center" style="width: 32px;">#</th>
           <th>Deliverables & Scope of Work</th>
-          ${invoice.enableSac ? '<th class="th-center" style="width: 80px;">SAC</th>' : ''}
-          <th class="th-center" style="width: 105px;">Period / Unit</th>
+          ${showSacCol ? '<th class="th-center" style="width: 80px;">SAC</th>' : ''}
+          ${showUnitCol ? '<th class="th-center" style="width: 105px;">Period / Unit</th>' : ''}
           <th class="th-right" style="width: 90px;">Fee Rate</th>
-          <th class="th-right" style="width: 65px;">Disc</th>
+          ${showDiscCol ? '<th class="th-right" style="width: 65px;">Disc</th>' : ''}
           <th class="th-right" style="width: 105px;">Amount (${cur.symbol})</th>
         </tr>
       </thead>
@@ -1279,9 +1306,9 @@
     // Line items table rows HTML
     let itemsTableRowsHtml = '';
     totals.items.forEach((item, idx) => {
-      const itemTitle = cleanText(item.title, '-');
+      const itemTitle = cleanText(item.title);
       const itemDesc = cleanText(item.desc);
-      const itemSac = cleanText(item.sac, '-');
+      const itemSac = cleanText(item.sac);
       const itemDisc = parseFloat(item.discount) || 0;
       const unitDisplay = formatUnitDisplay(item);
 
@@ -1289,13 +1316,13 @@
         <tr>
           <td class="td-center" style="width: 32px; color: #94a3b8;">${idx + 1}</td>
           <td>
-            <div class="item-title">${escapeHtml(itemTitle)}</div>
+            ${itemTitle ? `<div class="item-title">${escapeHtml(itemTitle)}</div>` : ''}
             ${itemDesc ? `<div class="item-desc">${escapeHtml(itemDesc)}</div>` : ''}
           </td>
-          ${invoice.enableSac ? `<td class="td-center item-code" style="width: 80px;">${escapeHtml(itemSac)}</td>` : ''}
-          <td class="td-center" style="width: 105px;">${unitDisplay}</td>
+          ${showSacCol ? `<td class="td-center item-code" style="width: 80px;">${escapeHtml(itemSac)}</td>` : ''}
+          ${showUnitCol ? `<td class="td-center" style="width: 105px;">${unitDisplay}</td>` : ''}
           <td class="td-right" style="width: 90px;">${formatMoney(item.rate, invoice.currency)}</td>
-          <td class="td-right" style="width: 65px;">${itemDisc > 0 ? itemDisc + '%' : '-'}</td>
+          ${showDiscCol ? `<td class="td-right" style="width: 65px;">${itemDisc > 0 ? itemDisc + '%' : ''}</td>` : ''}
           <td class="td-right" style="width: 105px; font-weight:700;">${formatMoney(item.lineTotal, invoice.currency)}</td>
         </tr>
       `;
@@ -1399,7 +1426,8 @@
     const clientGstin = cleanText(invoice.clientGstin);
     const clientPos = cleanText(invoice.placeOfSupply);
 
-    let clientHeading = '-';
+    const hasClient = !!(clientCompany || clientName || clientAddress || clientCityLine || clientEmail || clientPhone || clientGstin || clientPos);
+    let clientHeading = '';
     let clientAttn = '';
     if (clientCompany && clientName) {
       clientHeading = clientCompany;
@@ -1408,8 +1436,6 @@
       clientHeading = clientCompany;
     } else if (clientName) {
       clientHeading = clientName;
-    } else {
-      clientHeading = '-';
     }
 
     const clientDetailsHtml = [
@@ -1445,7 +1471,7 @@
       signatureHtml = `
         <div class="signature-area">
           ${invoice.signImage ? `<img src="${invoice.signImage}" alt="Signature" class="sign-img" />` : '<div style="height:44px;"></div>'}
-          <div class="sign-line">${signName ? escapeHtml(signName) : '-'}</div>
+          ${signName ? `<div class="sign-line">${escapeHtml(signName)}</div>` : ''}
           ${signTitle ? `<div class="sign-sub">${escapeHtml(signTitle)}</div>` : ''}
         </div>
       `;
@@ -1477,11 +1503,15 @@
         <div class="inv-meta">
           <div class="inv-title">INVOICE</div>
           <div class="inv-meta-grid">
-            <span class="inv-meta-label">Invoice No:</span>
-            <span class="inv-meta-val" style="font-family:var(--font-mono);">${escapeHtml(cleanText(invoice.invoiceNumber, '-'))}</span>
-            <span class="inv-meta-label">Date:</span>
-            <span class="inv-meta-val">${formatDate(invoice.issueDate)}</span>
-            ${cleanText(invoice.dueDate) ? `
+            ${cleanText(invoice.invoiceNumber) ? `
+              <span class="inv-meta-label">Invoice No:</span>
+              <span class="inv-meta-val" style="font-family:var(--font-mono);">${escapeHtml(cleanText(invoice.invoiceNumber))}</span>
+            ` : ''}
+            ${formatDate(invoice.issueDate) ? `
+              <span class="inv-meta-label">Date:</span>
+              <span class="inv-meta-val">${formatDate(invoice.issueDate)}</span>
+            ` : ''}
+            ${formatDate(invoice.dueDate) ? `
               <span class="inv-meta-label">Due Date:</span>
               <span class="inv-meta-val">${formatDate(invoice.dueDate)}</span>
             ` : ''}
@@ -1490,7 +1520,7 @@
       </div>
 
       <!-- PARTIES: FROM & TO -->
-      <div class="inv-parties">
+      <div class="inv-parties ${hasClient ? '' : 'single-party'}">
         <div class="party-card">
           <h4>From:</h4>
           <h3>${escapeHtml(fromName)}</h3>
@@ -1499,13 +1529,15 @@
           </div>
         </div>
 
-        <div class="party-card">
-          <h4>Billed To:</h4>
-          <h3>${escapeHtml(clientHeading)}</h3>
-          <div class="party-details">
-            ${clientDetailsHtml}
+        ${hasClient ? `
+          <div class="party-card">
+            <h4>Billed To:</h4>
+            ${clientHeading ? `<h3>${escapeHtml(clientHeading)}</h3>` : ''}
+            <div class="party-details">
+              ${clientDetailsHtml}
+            </div>
           </div>
-        </div>
+        ` : ''}
       </div>
 
       <!-- TABLE -->
@@ -1520,10 +1552,12 @@
       <div class="inv-bottom">
         <div>
           ${paymentBlockHtml}
-          <div class="words-block">
-            <strong>Amount in Words:</strong><br/>
-            <span>${totals.grandTotal > 0 && totals.words ? escapeHtml(totals.words) : '-'}</span>
-          </div>
+          ${(totals.grandTotal > 0 && totals.words && totals.words !== 'Zero') ? `
+            <div class="words-block">
+              <strong>Amount in Words:</strong><br/>
+              <span>${escapeHtml(totals.words)}</span>
+            </div>
+          ` : ''}
         </div>
 
         <div>
@@ -1671,9 +1705,10 @@
 
         // If numeric value changed, update this row's line total without rebuilding DOM
         if (field === 'qty' || field === 'rate' || field === 'discount') {
-          const qty = parseFloat(invoice.items[index].qty) || 0;
+          const rawQty = invoice.items[index].qty;
+          const qty = (rawQty === '' || rawQty === null || rawQty === undefined || isNaN(parseFloat(rawQty)) || parseFloat(rawQty) <= 0) ? 1 : parseFloat(rawQty);
           const rate = parseFloat(invoice.items[index].rate) || 0;
-          const disc = parseFloat(invoice.items[index].discount) || 0;
+          const disc = Math.max(0, Math.min(100, parseFloat(invoice.items[index].discount) || 0));
           const lineTotal = (qty * rate) * (1 - disc / 100);
           const totalDisplay = target.closest('.item-row')?.querySelector('.item-line-total');
           if (totalDisplay) {
@@ -1690,7 +1725,7 @@
         const wordsEl = document.getElementById('summary-words');
 
         if (subtotalEl) subtotalEl.textContent = formatMoney(totals.subtotal, invoice.currency);
-        if (discEl) discEl.textContent = '- ' + formatMoney(totals.discountAmount, invoice.currency);
+        if (discEl) discEl.textContent = totals.discountAmount > 0 ? ('- ' + formatMoney(totals.discountAmount, invoice.currency)) : '₹0.00';
         if (taxEl) taxEl.textContent = '+ ' + formatMoney(totals.taxTotal, invoice.currency);
         if (totalEl) totalEl.textContent = formatMoney(totals.grandTotal, invoice.currency);
         if (wordsEl) wordsEl.textContent = totals.words;
@@ -1724,7 +1759,7 @@
         title: "",
         desc: "",
         sac: "998313",
-        unitType: "fixed",
+        unitType: "none",
         qty: 1,
         rate: 0,
         discount: 0
@@ -2298,7 +2333,7 @@
           title: "",
           desc: "",
           sac: "998313",
-          unitType: "fixed",
+          unitType: "none",
           qty: 1,
           rate: 0,
           discount: 0

@@ -1134,6 +1134,10 @@ select.select-field option {
 }
 
 /* Info grid: From & To */
+.inv-parties.single-party {
+  grid-template-columns: 1fr !important;
+}
+
 .template-tessux .inv-parties {
   display: grid;
   grid-template-columns: 1fr 1fr;
