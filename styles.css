@@ -1250,7 +1250,10 @@ select.select-field option {
   align-items: center;
 }
 
-.template-tessux .qr-container {
+.template-tessux .qr-container,
+.template-gst .qr-container,
+.template-minimal .qr-container,
+.qr-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1258,19 +1261,31 @@ select.select-field option {
   gap: 4px;
 }
 .template-tessux .qr-container svg,
-.template-tessux .qr-container img {
-  width: 80px;
-  height: 80px;
+.template-tessux .qr-container img,
+.template-gst .qr-container svg,
+.template-gst .qr-container img,
+.template-minimal .qr-container svg,
+.template-minimal .qr-container img,
+.qr-container svg,
+.qr-container img {
+  width: 115px;
+  height: 115px;
   border: 1px solid #cbd5e1;
   padding: 3px;
   background: #ffffff;
   border-radius: 4px;
+  object-fit: contain;
 }
-.template-tessux .qr-container span {
-  font-size: 6.5pt;
+.template-tessux .qr-container span,
+.template-gst .qr-container span,
+.template-minimal .qr-container span,
+.qr-container span {
+  font-size: 7pt;
   font-weight: 700;
   color: #64748b;
   text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-align: center;
 }
 
 /* Footer / Signatures */
@@ -2652,7 +2667,12 @@ select.select-field option {
 @media print {
   @page {
     size: A4 portrait;
-    margin: 10mm 12mm;
+    margin: 8mm 10mm;
+  }
+
+  *, *::before, *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
   }
 
   body, html {
@@ -2660,6 +2680,7 @@ select.select-field option {
     color: #000000 !important;
     width: 100% !important;
     height: auto !important;
+    min-height: auto !important;
     overflow: visible !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -2670,23 +2691,36 @@ select.select-field option {
   .top-navbar,
   .editor-panel,
   .preview-toolbar,
+  .mobile-view-bar,
   .modal-backdrop,
   .toast-container,
   .auth-overlay,
-  .no-print {
+  .no-print,
+  #mobile-view-bar,
+  aside.editor-panel {
     display: none !important;
   }
 
   .app-container {
     display: block !important;
     height: auto !important;
+    min-height: auto !important;
     overflow: visible !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  .preview-panel {
+  .preview-panel,
+  .preview-panel.mobile-hidden {
+    display: block !important;
     background: transparent !important;
     height: auto !important;
+    width: 100% !important;
     overflow: visible !important;
+    position: static !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .preview-container {
@@ -2695,27 +2729,37 @@ select.select-field option {
     margin: 0 !important;
     overflow: visible !important;
     display: block !important;
+    width: 100% !important;
   }
 
   .preview-wrapper {
     transform: none !important;
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .invoice-sheet {
     box-shadow: none !important;
     border-radius: 0 !important;
-    padding: 0 !important;
+    padding: 12mm 15mm !important;
     width: 100% !important;
-    min-height: auto !important;
-    margin: 0 !important;
+    max-width: 210mm !important;
+    min-height: 270mm !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
   }
 
   .inv-table tr {
-    page-break-inside: avoid;
+    page-break-inside: avoid !important;
   }
 
   .inv-footer,
   .inv-bottom {
-    page-break-inside: avoid;
+    page-break-inside: avoid !important;
   }
 }

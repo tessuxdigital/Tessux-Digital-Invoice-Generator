@@ -664,6 +664,10 @@
           }
           VaultStorage.setItem('tessux_company_profile', JSON.stringify(parsed));
         }
+        if (parsed.qrMode === 'official' || !parsed.qrImage || (parsed.qrImage && parsed.qrImage.length < 50000)) {
+          parsed.qrImage = (typeof window !== 'undefined' && window.TESSUX_DEFAULT_QR_BASE64) ? window.TESSUX_DEFAULT_QR_BASE64 : "assets/payment-qr.png";
+          VaultStorage.setItem('tessux_company_profile', JSON.stringify(parsed));
+        }
         return { ...defaultProfile, ...parsed };
       }
     } catch (e) {
@@ -679,6 +683,9 @@
       if (draftRaw) {
         const parsedDraft = JSON.parse(draftRaw);
         if (parsedDraft && parsedDraft.invoiceNumber && parsedDraft.items && parsedDraft.items.length) {
+          if (parsedDraft.qrMode === 'official' || (parsedDraft.qrImage && parsedDraft.qrImage.length < 50000)) {
+            parsedDraft.qrImage = (typeof window !== 'undefined' && window.TESSUX_DEFAULT_QR_BASE64) ? window.TESSUX_DEFAULT_QR_BASE64 : "assets/payment-qr.png";
+          }
           return { ...parsedDraft };
         }
       }
@@ -1213,15 +1220,15 @@
       if (qrMode === 'official' && qrImgSrc) {
         upiQrHtml = `
           <div class="qr-container">
-            <img src="${qrImgSrc}" alt="PhonePe QR - Aditya A B" style="width:84px; height:84px; object-fit:contain; border-radius:4px; display:block; margin:0 auto 4px auto; background:#fff; border:1px solid #cbd5e1; padding:2px;" />
-            <span style="font-size:7pt; color:#475569; font-weight:700;">Scan & Pay via PhonePe / GPay</span>
+            <img src="${qrImgSrc}" alt="Google Pay / UPI QR - Aditya A B" style="width:115px; height:115px; object-fit:contain; border-radius:4px; display:block; margin:0 auto 4px auto; background:#fff; border:1px solid #cbd5e1; padding:3px;" />
+            <span style="font-size:7pt; color:#475569; font-weight:700;">Scan & Pay via GPay / UPI</span>
           </div>
         `;
       } else if (qrMode === 'dynamic' && invoice.upiId && totals.grandTotal > 0) {
         const upiUrl = `upi://pay?pa=${encodeURIComponent(invoice.upiId.trim())}&pn=${encodeURIComponent(invoice.accName || invoice.fromName || 'Aditya A B')}&am=${totals.grandTotal.toFixed(2)}&cu=INR&tn=${encodeURIComponent('Invoice ' + invoice.invoiceNumber)}`;
         try {
           if (window.QRCodeGenerator && window.QRCodeGenerator.toSVG) {
-            const qrSvg = window.QRCodeGenerator.toSVG(upiUrl, 82);
+            const qrSvg = window.QRCodeGenerator.toSVG(upiUrl, 115);
             upiQrHtml = `
               <div class="qr-container">
                 ${qrSvg}
@@ -1931,6 +1938,14 @@
       autoFitInvoicePreview();
     });
 
+    // Print event handlers to ensure invoice is always fully rendered
+    window.addEventListener('beforeprint', () => {
+      const previewPanel = document.querySelector('.preview-panel');
+      if (previewPanel) {
+        previewPanel.classList.remove('mobile-hidden');
+      }
+    });
+
     // Modals
     document.querySelectorAll('.modal-close-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -2144,18 +2159,35 @@
   }
 
   // Actions
-  function printInvoice() {
+  function prepareForPrint() {
     saveCurrentInvoice(true);
+    const tabPreview = document.getElementById('btn-tab-preview');
+    const tabEditor = document.getElementById('btn-tab-editor');
+    const previewPanel = document.querySelector('.preview-panel');
+    const editorPanel = document.querySelector('.editor-panel');
+    if (tabPreview && previewPanel) {
+      tabPreview.classList.add('active');
+      if (tabEditor) tabEditor.classList.remove('active');
+      previewPanel.classList.remove('mobile-hidden');
+      if (editorPanel) editorPanel.classList.add('mobile-hidden');
+    }
+    renderInvoicePreview();
+  }
+
+  function printInvoice() {
+    prepareForPrint();
     showToast(`Invoice ${invoice.invoiceNumber} saved! Opening print dialog...`, 'success');
-    window.print();
+    setTimeout(() => {
+      window.print();
+    }, 120);
   }
 
   function downloadPdf() {
-    saveCurrentInvoice(true);
+    prepareForPrint();
     showToast(`Invoice ${invoice.invoiceNumber} saved! Tip: Select "Save as PDF" in the print dialog`, 'success');
     setTimeout(() => {
       window.print();
-    }, 350);
+    }, 200);
   }
 
   function shareViaWhatsApp() {
