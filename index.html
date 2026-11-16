@@ -354,7 +354,17 @@
        ========================================================================= -->
   <header class="top-navbar no-print">
     <div class="brand-section">
-      <img src="assets/tessux-logo.jpg" alt="Tessux Digital" class="brand-logo-img" />
+      <div class="brand-logo-icon">
+        <svg viewBox="0 0 36 36" fill="none" width="36" height="36" class="brand-svg">
+          <rect width="36" height="36" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+          <path d="M9 13h18v14H9z" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M9 13l3.5-4h11l3.5 4" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <polygon points="16 17 23 20 16 23" fill="#38bdf8"/>
+          <line x1="13" y1="9" x2="15" y2="13" stroke="#94a3b8" stroke-width="1.5"/>
+          <line x1="18" y1="9" x2="20" y2="13" stroke="#94a3b8" stroke-width="1.5"/>
+          <line x1="23" y1="9" x2="25" y2="13" stroke="#94a3b8" stroke-width="1.5"/>
+        </svg>
+      </div>
       <div class="brand-info">
         <h1>
           TESSUX DIGITAL
@@ -559,7 +569,13 @@
         <div class="card-body">
           <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px; background:rgba(0,0,0,0.2); border-radius:var(--radius-sm); border:1px solid var(--border-color);">
             <div style="display:flex; align-items:center; gap:10px;">
-              <img src="assets/tessux-logo.jpg" alt="Logo preview" style="width:36px; height:36px; border-radius:4px; object-fit:cover; background:#fff;" />
+              <div id="agency-logo-preview-wrap" style="width:36px; height:36px; border-radius:6px; background:#1e293b; border:1px solid #334155; display:flex; align-items:center; justify-content:center; overflow:hidden; flex-shrink:0;">
+                <svg viewBox="0 0 36 36" fill="none" width="28" height="28">
+                  <path d="M9 13h18v14H9z" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" stroke-linejoin="round"/>
+                  <path d="M9 13l3.5-4h11l3.5 4" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polygon points="16 17 23 20 16 23" fill="#38bdf8"/>
+                </svg>
+              </div>
               <div>
                 <div style="font-size:0.8rem; font-weight:600; color:#fff;">Tessux Digital Logo</div>
                 <div style="font-size:0.7rem; color:var(--text-dim);">Embedded in all PDF exports</div>
@@ -1010,10 +1026,16 @@
         <!-- Zoom Controls -->
         <div class="toolbar-group">
           <div class="zoom-controls">
-            <button type="button" class="zoom-btn" id="btn-zoom-out" title="Zoom Out">−</button>
+            <button type="button" class="zoom-btn" id="btn-zoom-out" title="Zoom Out">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </button>
             <span class="zoom-level" id="zoom-level-text">100%</span>
-            <button type="button" class="zoom-btn" id="btn-zoom-in" title="Zoom In">+</button>
-            <button type="button" class="zoom-btn" id="btn-zoom-fit" title="Fit Zoom">Fit</button>
+            <button type="button" class="zoom-btn" id="btn-zoom-in" title="Zoom In">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </button>
+            <button type="button" class="zoom-btn" id="btn-zoom-fit" title="Fit to Screen">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+            </button>
           </div>
         </div>
 
@@ -1047,7 +1069,9 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 5v14M5 12h14"/></svg>
             <span>+ New Invoice</span>
           </button>
-          <button type="button" class="btn btn-secondary btn-icon btn-sm modal-close-btn">✕</button>
+          <button type="button" class="btn btn-secondary btn-icon btn-sm modal-close-btn" title="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
         </div>
       </div>
 
@@ -1059,8 +1083,9 @@
 
         <!-- SEARCH & STATUS FILTERS ROW -->
         <div class="crud-filter-row">
-          <div style="flex:1; min-width:200px; position:relative;">
-            <input type="text" id="history-search-input" class="input-field" placeholder="🔍 Search by client, project, PO or invoice #..." />
+          <div class="search-input-wrap" style="flex:1; min-width:200px; position:relative;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" class="search-input-icon" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-dim); pointer-events:none;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="history-search-input" class="input-field" placeholder="Search by client, project, PO or invoice #..." style="padding-left:36px;" />
           </div>
           <div class="crud-status-tabs" id="history-status-filters">
             <button type="button" class="crud-filter-btn active" data-status="all">All</button>
@@ -1105,7 +1130,9 @@
     <div class="modal-card" style="max-width:500px;">
       <div class="modal-header">
         <h3>Agency Data & Hosting Info</h3>
-        <button type="button" class="btn btn-secondary btn-icon btn-sm modal-close-btn">✕</button>
+        <button type="button" class="btn btn-secondary btn-icon btn-sm modal-close-btn" title="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
       </div>
       <div class="modal-body" style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">
         <p><strong>100% Client-Side & Private:</strong> All invoices and company profiles are stored locally in your browser. No sensitive financial information or client data is sent to any external server.</p>
@@ -1128,7 +1155,17 @@
   <div id="auth-overlay" class="auth-overlay">
     <div class="auth-card">
       <div class="auth-brand">
-        <img src="assets/tessux-logo.jpg" alt="Tessux Digital Logo" class="auth-logo" />
+        <div class="auth-logo-svg-wrap">
+          <svg viewBox="0 0 44 44" fill="none" width="44" height="44">
+            <rect width="44" height="44" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+            <path d="M11 16h22v17H11z" fill="#0f172a" stroke="#38bdf8" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M11 16l4-5h14l4 5" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polygon points="19 21 27 25 19 29" fill="#38bdf8"/>
+            <line x1="15" y1="11" x2="17.5" y2="16" stroke="#94a3b8" stroke-width="1.6"/>
+            <line x1="22" y1="11" x2="24.5" y2="16" stroke="#94a3b8" stroke-width="1.6"/>
+            <line x1="29" y1="11" x2="31.5" y2="16" stroke="#94a3b8" stroke-width="1.6"/>
+          </svg>
+        </div>
         <div class="auth-brand-text">
           <h2>TESSUX DIGITAL</h2>
           <span class="auth-tag">AGENCY INVOICE ENGINE</span>
@@ -1194,7 +1231,9 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" style="color:#10b981;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <h3 style="margin:0;">Security & Data Vault</h3>
         </div>
-        <button type="button" class="btn btn-secondary btn-icon btn-sm modal-close-btn">✕</button>
+        <button type="button" class="btn btn-secondary btn-icon btn-sm modal-close-btn" title="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
       </div>
 
       <div class="modal-body" style="padding:16px;">
@@ -1202,7 +1241,10 @@
         <div class="sec-info-card">
           <div class="sec-info-row">
             <span style="color:var(--text-dim);">Vault Encryption Status:</span>
-            <span style="color:#10b981; font-weight:700;">🔒 ACTIVE (AES-256 + SHA-256)</span>
+            <span style="color:#10b981; font-weight:700; display:inline-flex; align-items:center; gap:6px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              ACTIVE (AES-256 + SHA-256)
+            </span>
           </div>
           <div class="sec-info-row">
             <span style="color:var(--text-dim);">Invoices In Secure Storage:</span>
@@ -1268,11 +1310,13 @@
           </h4>
           <p style="font-size:0.76rem; color:var(--text-dim); margin:0 0 10px 0;">Export all invoices, bank account, and agency profiles into an encrypted <code>.tessux-vault</code> package.</p>
           <div style="display:flex; gap:8px; flex-wrap:wrap;">
-            <button type="button" class="btn btn-secondary btn-sm" id="btn-export-encrypted-vault">
-              🔒 Export Encrypted Vault
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-export-encrypted-vault" style="display:inline-flex; align-items:center; gap:6px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Export Encrypted Vault</span>
             </button>
-            <label class="btn btn-secondary btn-sm" style="margin:0; cursor:pointer;">
-              📂 Restore Encrypted Vault
+            <label class="btn btn-secondary btn-sm" style="margin:0; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              <span>Restore Encrypted Vault</span>
               <input type="file" id="input-import-encrypted-vault" accept=".json,.tessux-vault" style="display:none;" />
             </label>
           </div>
@@ -1280,8 +1324,9 @@
       </div>
 
       <div class="modal-footer" style="display:flex; justify-content:space-between; align-items:center;">
-        <button type="button" class="btn btn-danger btn-sm" id="btn-sec-logout">
-          🔒 Lock Studio Now
+        <button type="button" class="btn btn-danger btn-sm" id="btn-sec-logout" style="display:inline-flex; align-items:center; gap:6px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>Lock Studio Now</span>
         </button>
         <button type="button" class="btn btn-primary btn-sm modal-close-btn">Done</button>
       </div>

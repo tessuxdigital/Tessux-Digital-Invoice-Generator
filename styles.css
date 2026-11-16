@@ -86,6 +86,19 @@ body {
   flex-shrink: 0;
 }
 
+.brand-logo-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+}
+.brand-logo-icon svg {
+  display: block;
+}
+
 .brand-logo-img {
   width: 38px;
   height: 38px;
@@ -699,6 +712,9 @@ select.select-field option {
 }
 
 .preset-cat-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background: transparent;
   border: none;
   color: var(--text-muted);
@@ -709,6 +725,10 @@ select.select-field option {
   cursor: pointer;
   transition: all var(--transition-fast);
 }
+.preset-cat-btn svg {
+  flex-shrink: 0;
+  stroke: currentColor;
+}
 .preset-cat-btn:hover {
   color: #ffffff;
 }
@@ -716,6 +736,9 @@ select.select-field option {
   background: #374151;
   color: #ffffff;
   font-weight: 600;
+}
+.preset-cat-btn.active svg {
+  stroke: #38bdf8;
 }
 
 /* Service presets bar */
@@ -938,6 +961,12 @@ select.select-field option {
   border-radius: 4px;
   cursor: pointer;
   font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.zoom-btn svg {
+  display: block;
 }
 .zoom-btn:hover {
   color: #ffffff;
@@ -972,19 +1001,22 @@ select.select-field option {
    THE A4 INVOICE SHEET (TRUE A4 PRINT DIMENSIONS: 210mm x 297mm)
    ========================================================================== */
 .invoice-sheet {
+  --sheet-pad-v: 8mm;
+  --sheet-pad-h: 10mm;
   width: 210mm;
   min-height: 297mm;
   background: #ffffff;
   color: #1e293b;
   box-shadow: var(--shadow-paper);
   border-radius: 2px;
-  padding: 16mm 18mm;
+  padding: var(--sheet-pad-v) var(--sheet-pad-h);
   position: relative;
   font-size: 9.5pt;
   line-height: 1.45;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 
 /* Stamp Overlay */
@@ -1034,7 +1066,7 @@ select.select-field option {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding-bottom: 18px;
+  padding-bottom: 12px;
   border-bottom: 2px solid var(--inv-theme);
 }
 
@@ -1105,8 +1137,8 @@ select.select-field option {
 .template-tessux .inv-parties {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  padding: 16px 0;
+  gap: 24px;
+  padding: 12px 0;
 }
 
 .template-tessux .party-card h4 {
@@ -1138,7 +1170,7 @@ select.select-field option {
 .template-tessux .inv-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 14px 0;
+  margin: 10px 0;
 }
 
 .template-tessux .inv-table th {
@@ -1290,8 +1322,8 @@ select.select-field option {
 
 /* Footer / Signatures */
 .template-tessux .inv-footer {
-  margin-top: 20px;
-  padding-top: 12px;
+  margin-top: 14px;
+  padding-top: 10px;
   border-top: 1px solid #e2e8f0;
   display: flex;
   justify-content: space-between;
@@ -1335,8 +1367,8 @@ select.select-field option {
 .template-executive .inv-header {
   background: var(--inv-theme);
   color: var(--inv-theme-contrast);
-  margin: -16mm -18mm 16px -18mm;
-  padding: 16mm 18mm 14mm 18mm;
+  margin: calc(-1 * var(--sheet-pad-v, 8mm)) calc(-1 * var(--sheet-pad-h, 10mm)) 14px calc(-1 * var(--sheet-pad-h, 10mm));
+  padding: 10mm 12mm 10mm 12mm;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1473,7 +1505,7 @@ select.select-field option {
 .template-gst {
   font-family: Arial, Helvetica, sans-serif;
   border: 2px solid #0f172a;
-  padding: 12mm 14mm;
+  padding: var(--sheet-pad-v, 8mm) var(--sheet-pad-h, 10mm);
 }
 
 .template-gst .inv-header {
@@ -1717,7 +1749,7 @@ select.select-field option {
    -------------------------------------------------------------------------- */
 .template-minimal {
   font-family: var(--font-sans);
-  padding: 16mm 18mm;
+  padding: var(--sheet-pad-v, 8mm) var(--sheet-pad-h, 10mm);
 }
 
 .template-minimal .inv-header {
@@ -2231,6 +2263,15 @@ select.select-field option {
   padding-top: 6px;
   border-top: 1px dashed rgba(255, 255, 255, 0.08);
 }
+.crud-card-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.crud-card-meta span svg {
+  flex-shrink: 0;
+  color: #64748b;
+}
 
 .crud-card-actions {
   display: flex;
@@ -2238,6 +2279,14 @@ select.select-field option {
   gap: 8px;
   flex-wrap: wrap;
   margin-top: 2px;
+}
+.crud-card-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.crud-card-actions button svg {
+  flex-shrink: 0;
 }
 
 .history-item {
@@ -2383,6 +2432,18 @@ select.select-field option {
   align-items: center;
   gap: 14px;
   margin-bottom: 16px;
+}
+
+.auth-logo-svg-wrap {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.auth-logo-svg-wrap svg {
+  display: block;
 }
 
 .auth-logo {
@@ -2667,7 +2728,7 @@ select.select-field option {
 @media print {
   @page {
     size: A4 portrait;
-    margin: 8mm 10mm;
+    margin: 0;
   }
 
   *, *::before, *::after {
@@ -2679,8 +2740,7 @@ select.select-field option {
     background: #ffffff !important;
     color: #000000 !important;
     width: 100% !important;
-    height: auto !important;
-    min-height: auto !important;
+    height: 100% !important;
     overflow: visible !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -2732,7 +2792,8 @@ select.select-field option {
     width: 100% !important;
   }
 
-  .preview-wrapper {
+  .preview-wrapper,
+  #invoice-preview-wrapper {
     transform: none !important;
     display: block !important;
     width: 100% !important;
@@ -2743,10 +2804,10 @@ select.select-field option {
   .invoice-sheet {
     box-shadow: none !important;
     border-radius: 0 !important;
-    padding: 12mm 15mm !important;
-    width: 100% !important;
+    padding: 8mm 10mm !important;
+    width: 210mm !important;
     max-width: 210mm !important;
-    min-height: 270mm !important;
+    min-height: 292mm !important;
     margin: 0 auto !important;
     box-sizing: border-box !important;
     display: flex !important;
@@ -2754,12 +2815,13 @@ select.select-field option {
     justify-content: space-between !important;
   }
 
-  .inv-table tr {
+  .inv-header,
+  .inv-parties,
+  .inv-table thead,
+  .inv-table tr,
+  .inv-bottom,
+  .inv-footer {
     page-break-inside: avoid !important;
-  }
-
-  .inv-footer,
-  .inv-bottom {
-    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 }

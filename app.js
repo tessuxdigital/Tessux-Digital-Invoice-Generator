@@ -464,7 +464,8 @@
   // --- AGENCY PRESETS CATEGORIZED BY TESSUX DIGITAL DOMAINS ---
   const SERVICE_DOMAINS = {
     marketing: {
-      name: "📈 Digital Marketing",
+      name: "Digital Marketing",
+      iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
       items: [
         { title: "Social Media Marketing (SMM) - Monthly Retainer", desc: "Monthly content calendar, 20 bespoke graphics, 8 reels/video shorts, captions, community moderation & weekly analytics review", unitType: "month", qty: 1, rate: 28000, sac: "998315" },
         { title: "Meta & Google Ads Campaign Management", desc: "Full-funnel PPC campaign architecture, audience segmentation, creative A/B testing, pixel conversion tracking & weekly ROAS report", unitType: "month", qty: 1, rate: 35000, sac: "998315" },
@@ -473,7 +474,8 @@
       ]
     },
     website: {
-      name: "🌐 Website & E-Commerce",
+      name: "Website & E-Commerce",
+      iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
       items: [
         { title: "Custom Corporate Website Development", desc: "Responsive 8-page website, interactive UI/UX Figma system, custom contact forms, CMS setup & fast loading optimization", unitType: "milestone", qty: 1, rate: 55000, sac: "998314" },
         { title: "E-Commerce Web Portal (Shopify / Custom Gateway)", desc: "Product catalogue setup, cart & checkout flow, payment gateway integration (Razorpay/Stripe), automated tax & inventory sync", unitType: "milestone", qty: 1, rate: 85000, sac: "998313" },
@@ -482,7 +484,8 @@
       ]
     },
     software: {
-      name: "💻 Software & SaaS",
+      name: "Software & SaaS",
+      iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
       items: [
         { title: "Custom SaaS / Web Application Architecture", desc: "System architecture, PostgreSQL/MongoDB schema design, multi-tenant database modeling, JWT/OAuth authentication & RBAC", unitType: "milestone", qty: 1, rate: 120000, sac: "998313" },
         { title: "Frontend Admin Dashboard & Client Portal", desc: "Modular React/Next.js interface, interactive data tables, real-time analytics graphs, CSV export & responsive dark/light modes", unitType: "milestone", qty: 1, rate: 75000, sac: "998313" },
@@ -491,7 +494,8 @@
       ]
     },
     apps: {
-      name: "📱 Mobile Apps (iOS & Android)",
+      name: "Mobile Apps",
+      iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>',
       items: [
         { title: "Cross-Platform Mobile App (Milestone 1 - MVP)", desc: "Production Flutter / React Native mobile app development, core navigation, secure user authentication & backend API binding", unitType: "milestone", qty: 1, rate: 95000, sac: "998313" },
         { title: "Mobile UI/UX Wireframing & Interactive Prototype", desc: "Complete mobile design kit, component library, interactive touch prototypes, user journey mapping & dev design specs", unitType: "fixed", qty: 1, rate: 32000, sac: "998314" },
@@ -500,7 +504,8 @@
       ]
     },
     events: {
-      name: "🎪 Event Planning & Management",
+      name: "Event Planning",
+      iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
       items: [
         { title: "End-to-End Corporate Event Production & Staging", desc: "Complete venue management, physical stage setup, attendee flow, show running sheet execution & technical crew direction", unitType: "event", qty: 1, rate: 150000, sac: "998596" },
         { title: "Audio-Visual (AV) Technical Setup, Sound & Lighting", desc: "Professional sound system, wireless lapel/handheld mics, stage lighting truss, LED backdrop display & live audio engineer", unitType: "days", qty: 2, rate: 65000, sac: "998596" },
@@ -1018,10 +1023,11 @@
 
     tabsContainer.innerHTML = '';
     Object.keys(SERVICE_DOMAINS).forEach(key => {
+      const d = SERVICE_DOMAINS[key];
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = `preset-cat-btn ${key === activePresetTab ? 'active' : ''}`;
-      btn.textContent = SERVICE_DOMAINS[key].name;
+      btn.innerHTML = `${d.iconSvg || ''}<span>${escapeHtml(d.name)}</span>`;
       btn.addEventListener('click', () => {
         activePresetTab = key;
         renderPresetCategories();
@@ -1038,7 +1044,7 @@
         pBtn.className = 'pill-btn';
         // Remove trailing parentheticals or trailing dashes, without breaking compound words like E-Commerce
         const cleanTitle = p.title.replace(/\s*\(.*?\)\s*/g, ' ').replace(/\s+-\s+.*$/, '').trim();
-        pBtn.innerHTML = `+ ${escapeHtml(cleanTitle)} <span style="opacity:0.75; font-size:0.68rem;">(${UNIT_LABELS[p.unitType] || p.unitType})</span>`;
+        pBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="11" height="11" style="display:inline-block; vertical-align:-1px; margin-right:4px;"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>${escapeHtml(cleanTitle)} <span style="opacity:0.75; font-size:0.68rem;">(${UNIT_LABELS[p.unitType] || p.unitType})</span>`;
         pBtn.addEventListener('click', () => {
           invoice.items.push({
             id: "item_" + Date.now(),
@@ -1205,11 +1211,24 @@
       stampHtml = `<div class="invoice-stamp visible ${stampClass}">${invoice.status.toUpperCase()}</div>`;
     }
 
-    // Logo
+    // Logo (Crisp Vector SVG mark by default, or user-uploaded custom logo)
     const hasCustomLogo = !!(invoice.fromLogo && invoice.fromLogo.trim());
-    const defaultLogo = (typeof window !== 'undefined' && window.TESSUX_DEFAULT_LOGO) ? window.TESSUX_DEFAULT_LOGO : "assets/tessux-logo.jpg";
-    const logoSrc = hasCustomLogo ? invoice.fromLogo.trim() : defaultLogo;
-    const logoHtml = logoSrc ? `<img src="${logoSrc}" alt="Tessux Digital Logo" class="inv-logo" />` : '';
+    let logoHtml = '';
+    if (hasCustomLogo) {
+      logoHtml = `<img src="${escapeHtml(invoice.fromLogo.trim())}" alt="Tessux Digital Logo" class="inv-logo" />`;
+    } else {
+      logoHtml = `
+        <svg viewBox="0 0 44 44" fill="none" width="44" height="44" class="inv-logo inv-logo-svg">
+          <rect width="44" height="44" rx="8" fill="#0f172a"/>
+          <path d="M11 16h22v17H11z" fill="#0f172a" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M11 16l4-5h14l4 5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <polygon points="19 21 27 25 19 29" fill="#ffffff"/>
+          <line x1="15" y1="11" x2="17" y2="16" stroke="#94a3b8" stroke-width="1.5"/>
+          <line x1="22" y1="11" x2="24" y2="16" stroke="#94a3b8" stroke-width="1.5"/>
+          <line x1="29" y1="11" x2="31" y2="16" stroke="#94a3b8" stroke-width="1.5"/>
+        </svg>
+      `;
+    }
 
     // QR Code (Official PhonePe QR or Dynamic Amount UPI QR)
     let upiQrHtml = '';
@@ -2494,7 +2513,9 @@
       card.className = 'crud-invoice-card';
       const curStatus = (item.status || 'draft').toLowerCase();
       const nextToggleStatus = curStatus === 'paid' ? 'pending' : 'paid';
-      const toggleLabel = curStatus === 'paid' ? 'Mark Pending' : 'Mark Paid ✓';
+      const toggleBtnHtml = curStatus === 'paid'
+        ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>Mark Pending</span>`
+        : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><polyline points="20 6 9 17 4 12"/></svg><span>Mark Paid</span>`;
       const isOverdue = curStatus === 'pending' && item.dueDate && item.dueDate < today;
 
       card.innerHTML = `
@@ -2515,26 +2536,30 @@
         </div>
 
         <div class="crud-card-meta">
-          <span>📅 Date: <strong>${formatDate(item.issueDate)}</strong></span>
-          <span>⏰ Due: <strong>${formatDate(item.dueDate)}</strong></span>
-          <span>💼 Items: <strong>${item.items ? item.items.length : 0}</strong></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Date: <strong>${formatDate(item.issueDate)}</strong></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Due: <strong>${formatDate(item.dueDate)}</strong></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Items: <strong>${item.items ? item.items.length : 0}</strong></span>
         </div>
 
         <div class="crud-card-actions">
           <button type="button" class="btn btn-primary btn-sm btn-load-inv" data-id="${item.id}" title="Edit this invoice in the studio">
-            ✏️ Edit
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            <span>Edit</span>
           </button>
           <button type="button" class="btn btn-secondary btn-sm btn-quick-status-inv" data-id="${item.id}" data-target-status="${nextToggleStatus}" title="Toggle between Paid and Pending">
-            ${toggleLabel}
+            ${toggleBtnHtml}
           </button>
           <button type="button" class="btn btn-secondary btn-sm btn-print-direct-inv" data-id="${item.id}" title="Load and open Print/PDF dialog">
-            🖨️ Print/PDF
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            <span>Print/PDF</span>
           </button>
           <button type="button" class="btn btn-secondary btn-sm btn-dup-inv" data-id="${item.id}" title="Clone as a new invoice with next number">
-            📋 Clone
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span>Clone</span>
           </button>
           <button type="button" class="btn btn-danger btn-sm btn-del-inv" data-id="${item.id}" title="Delete this invoice permanently" style="margin-left:auto;">
-            🗑️ Delete
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            <span>Delete</span>
           </button>
         </div>
       `;
@@ -2636,7 +2661,7 @@
       showToast('No invoices stored to clear', 'info');
       return;
     }
-    if (!confirm(`⚠️ DANGER: Delete all ${history.length} saved invoices? This cannot be undone.`)) return;
+    if (!confirm(`WARNING: Delete all ${history.length} saved invoices? This cannot be undone.`)) return;
     VaultStorage.removeItem('tessux_invoices_history');
     updateHistoryCountBadge();
     renderHistoryList('', activeHistoryStatusFilter);
