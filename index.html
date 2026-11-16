@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tessux Digital - Automated Agency Invoice System</title>
-  <meta name="description" content="Automated client billing & invoice generator for Tessux Digital: Digital Marketing, Websites, Software, Apps, and Event Planning." />
-  
+  <meta name="description"
+    content="Automated client billing & invoice generator for Tessux Digital: Digital Marketing, Websites, Software, Apps, and Event Planning." />
+
   <!-- Modern Clean Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;600;700;800;900&display=swap"
+    rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css?v=2.3" />
   <link rel="icon" type="image/jpeg" href="assets/tessux-logo.jpg" />
@@ -23,11 +27,13 @@
         height: calc(100vh - 66px) !important;
         overflow: hidden !important;
       }
+
       @media (min-width: 1600px) {
         .app-container {
           grid-template-columns: 520px 1fr !important;
         }
       }
+
       @media (max-width: 1024px) {
         .app-container {
           grid-template-columns: 1fr !important;
@@ -53,14 +59,17 @@
       width: 100% !important;
       min-height: min-content !important;
     }
+
     .card-header {
       cursor: pointer !important;
       user-select: none;
       transition: background 0.15s ease, border-color 0.15s ease;
     }
+
     .card-header:hover {
       background: rgba(255, 255, 255, 0.06) !important;
     }
+
     .chevron-icon {
       display: block !important;
       width: 16px;
@@ -69,18 +78,22 @@
       transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       flex-shrink: 0;
     }
+
     .form-card.open .chevron-icon {
       transform: rotate(180deg) !important;
       color: #818cf8;
     }
+
     .card-body {
       display: none;
     }
+
     .form-card.open .card-body {
       display: flex !important;
       flex-shrink: 0 !important;
       min-height: min-content !important;
     }
+
     .editor-toolbar-actions {
       display: flex;
       align-items: center;
@@ -101,15 +114,18 @@
       flex-direction: column !important;
       gap: 10px !important;
     }
+
     .item-row-top {
       display: flex !important;
       gap: 8px !important;
       align-items: center !important;
     }
+
     .item-title-input {
       flex: 1 !important;
       font-weight: 600 !important;
     }
+
     .item-field-label {
       font-size: 0.68rem !important;
       color: #94a3b8 !important;
@@ -118,6 +134,7 @@
       margin-bottom: 4px !important;
       white-space: nowrap !important;
     }
+
     .item-row-grid {
       display: grid !important;
       grid-template-columns: repeat(auto-fit, minmax(95px, 1fr)) !important;
@@ -128,9 +145,11 @@
       border-radius: 6px !important;
       border: 1px solid rgba(255, 255, 255, 0.05) !important;
     }
+
     .line-items-wrapper.hide-sac .item-sac-col {
       display: none !important;
     }
+
     .item-line-total {
       background: rgba(16, 185, 129, 0.12) !important;
       border: 1px solid rgba(16, 185, 129, 0.35) !important;
@@ -153,6 +172,7 @@
     .mobile-view-bar {
       display: none;
     }
+
     @media screen and (max-width: 1024px) {
       .mobile-view-bar {
         display: flex !important;
@@ -164,6 +184,7 @@
         top: 0;
         z-index: 95;
       }
+
       .mobile-tab-btn {
         flex: 1;
         display: flex;
@@ -180,11 +201,13 @@
         cursor: pointer;
         transition: all 0.2s ease;
       }
+
       .mobile-tab-btn.active {
         background: #4f46e5 !important;
         border-color: #6366f1 !important;
         color: #ffffff !important;
       }
+
       .editor-panel.mobile-hidden,
       .preview-panel.mobile-hidden {
         display: none !important;
@@ -196,13 +219,16 @@
       .brand-info p {
         display: none !important;
       }
+
       .top-navbar {
         padding: 8px 16px !important;
       }
+
       .nav-actions {
         gap: 6px !important;
       }
     }
+
     @media (max-width: 768px) {
       .top-navbar {
         flex-direction: column !important;
@@ -210,9 +236,11 @@
         padding: 8px 12px !important;
         gap: 8px !important;
       }
+
       .brand-section {
         justify-content: space-between !important;
       }
+
       .nav-actions {
         overflow-x: auto !important;
         flex-wrap: nowrap !important;
@@ -220,12 +248,15 @@
         -webkit-overflow-scrolling: touch !important;
         scrollbar-width: none !important;
       }
+
       .nav-actions::-webkit-scrollbar {
         display: none !important;
       }
+
       .nav-actions .btn {
         flex-shrink: 0 !important;
       }
+
       .form-row,
       .form-row-3,
       .form-row-4 {
@@ -239,11 +270,16 @@
         size: A4 portrait;
         margin: 8mm 10mm;
       }
-      *, *::before, *::after {
+
+      *,
+      *::before,
+      *::after {
         box-shadow: none !important;
         text-shadow: none !important;
       }
-      html, body {
+
+      html,
+      body {
         background: #ffffff !important;
         color: #000000 !important;
         width: 100% !important;
@@ -255,6 +291,7 @@
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
+
       .top-navbar,
       .editor-panel,
       .preview-toolbar,
@@ -267,6 +304,7 @@
       aside.editor-panel {
         display: none !important;
       }
+
       .app-container {
         display: block !important;
         grid-template-columns: none !important;
@@ -277,6 +315,7 @@
         margin: 0 !important;
         padding: 0 !important;
       }
+
       .preview-panel,
       .preview-panel.mobile-hidden {
         display: block !important;
@@ -288,6 +327,7 @@
         background: transparent !important;
         position: static !important;
       }
+
       .preview-container {
         display: block !important;
         width: 100% !important;
@@ -297,6 +337,7 @@
         padding: 0 !important;
         background: transparent !important;
       }
+
       .preview-wrapper {
         display: block !important;
         width: 100% !important;
@@ -305,6 +346,7 @@
         margin: 0 !important;
         padding: 0 !important;
       }
+
       .invoice-sheet {
         display: flex !important;
         flex-direction: column !important;
@@ -323,10 +365,13 @@
         page-break-inside: avoid !important;
         break-inside: avoid !important;
       }
+
       .inv-table tr {
         page-break-inside: avoid !important;
       }
-      .inv-footer, .inv-bottom {
+
+      .inv-footer,
+      .inv-bottom {
         page-break-inside: avoid !important;
       }
     }
@@ -347,6 +392,7 @@
     }
   </script>
 </head>
+
 <body>
 
   <!-- =========================================================================
@@ -356,13 +402,14 @@
     <div class="brand-section">
       <div class="brand-logo-icon">
         <svg viewBox="0 0 36 36" fill="none" width="36" height="36" class="brand-svg">
-          <rect width="36" height="36" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-          <path d="M9 13h18v14H9z" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" stroke-linejoin="round"/>
-          <path d="M9 13l3.5-4h11l3.5 4" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          <polygon points="16 17 23 20 16 23" fill="#38bdf8"/>
-          <line x1="13" y1="9" x2="15" y2="13" stroke="#94a3b8" stroke-width="1.5"/>
-          <line x1="18" y1="9" x2="20" y2="13" stroke="#94a3b8" stroke-width="1.5"/>
-          <line x1="23" y1="9" x2="25" y2="13" stroke="#94a3b8" stroke-width="1.5"/>
+          <rect width="36" height="36" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+          <path d="M9 13h18v14H9z" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" stroke-linejoin="round" />
+          <path d="M9 13l3.5-4h11l3.5 4" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polygon points="16 17 23 20 16 23" fill="#38bdf8" />
+          <line x1="13" y1="9" x2="15" y2="13" stroke="#94a3b8" stroke-width="1.5" />
+          <line x1="18" y1="9" x2="20" y2="13" stroke="#94a3b8" stroke-width="1.5" />
+          <line x1="23" y1="9" x2="25" y2="13" stroke="#94a3b8" stroke-width="1.5" />
         </svg>
       </div>
       <div class="brand-info">
@@ -376,48 +423,80 @@
 
     <div class="nav-actions">
       <button type="button" class="btn btn-secondary btn-sm" id="btn-new-invoice" title="Create clean blank invoice">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12h14" />
+        </svg>
         <span>Start Blank</span>
       </button>
 
-      <button type="button" class="btn btn-secondary btn-sm" id="btn-fill-demo" title="Fill with sample agency invoice data">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      <button type="button" class="btn btn-secondary btn-sm" id="btn-fill-demo"
+        title="Fill with sample agency invoice data">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+        </svg>
         <span>Fill Demo</span>
       </button>
 
       <button type="button" class="btn btn-secondary btn-sm" id="btn-save-invoice" title="Save this invoice to history">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+          <polyline points="17 21 17 13 7 13 7 21" />
+          <polyline points="7 3 7 8 15 8" />
+        </svg>
         <span>Save</span>
       </button>
 
       <button type="button" class="btn btn-secondary btn-sm" id="btn-show-history" title="View saved past invoices">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="12 6 12 12 16 14" />
+        </svg>
         <span>Invoices</span>
         <span class="badge badge-pending" id="saved-count-badge">0</span>
       </button>
 
-      <button type="button" class="btn btn-secondary btn-sm" id="btn-share-whatsapp" title="Share invoice summary on WhatsApp">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      <button type="button" class="btn btn-secondary btn-sm" id="btn-share-whatsapp"
+        title="Share invoice summary on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path
+            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+        </svg>
         <span>WhatsApp</span>
       </button>
 
       <button type="button" class="btn btn-secondary btn-sm" id="btn-share-email" title="Email invoice directly">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+          <polyline points="22,6 12,13 2,6" />
+        </svg>
         <span>Email</span>
       </button>
 
       <button type="button" class="btn btn-primary btn-sm" id="btn-download-pdf" title="Download Print-ready PDF">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
         <span>Download PDF</span>
       </button>
 
       <button type="button" class="btn btn-accent btn-sm" id="btn-print" title="Direct browser print">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 6 2 18 2 18 9" />
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+          <rect x="6" y="14" width="12" height="8" />
+        </svg>
         <span>Print</span>
       </button>
 
-      <button type="button" class="btn btn-secondary btn-icon btn-sm" id="btn-company-settings" title="Agency Info & Backup">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      <button type="button" class="btn btn-secondary btn-icon btn-sm" id="btn-company-settings"
+        title="Agency Info & Backup">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3" />
+          <path
+            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+        </svg>
       </button>
 
       <!-- DATA SAVE & SECURITY VAULT CONTROLS -->
@@ -426,13 +505,20 @@
         <span id="vault-status-text">Vault Protected</span>
       </div>
 
-      <button type="button" class="btn btn-secondary btn-sm" id="btn-open-security" title="Security & Encrypted Vault Settings">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <button type="button" class="btn btn-secondary btn-sm" id="btn-open-security"
+        title="Security & Encrypted Vault Settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        </svg>
         <span>Security</span>
       </button>
 
-      <button type="button" class="btn btn-secondary btn-sm" id="btn-app-lock" title="Lock Studio & Return to Login Screen">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <button type="button" class="btn btn-secondary btn-sm" id="btn-app-lock"
+        title="Lock Studio & Return to Login Screen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+        </svg>
         <span>Lock</span>
       </button>
     </div>
@@ -441,11 +527,17 @@
   <!-- RESPONSIVE MOBILE VIEW SWITCHER (ONLY ACTIVE ON <= 1024px) -->
   <div class="mobile-view-bar no-print" id="mobile-view-bar">
     <button type="button" class="mobile-tab-btn active" id="btn-tab-editor">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+      </svg>
       <span>Edit Invoice Form</span>
     </button>
     <button type="button" class="mobile-tab-btn" id="btn-tab-preview">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+        <circle cx="12" cy="12" r="3" />
+      </svg>
       <span>View Live Invoice</span>
     </button>
   </div>
@@ -454,20 +546,28 @@
        MAIN DUAL CONTAINER
        ========================================================================= -->
   <main class="app-container">
-    
+
     <!-- LEFT EDITOR PANEL (INPUT FORM) -->
     <aside class="editor-panel no-print">
 
       <!-- QUICK EXPAND / COLLAPSE TOOLBAR -->
       <div class="editor-toolbar-actions">
-        <span style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-dim);">Invoice Sections</span>
+        <span
+          style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-dim);">Invoice
+          Sections</span>
         <div style="display:flex; gap:8px;">
-          <button type="button" class="btn btn-secondary btn-sm" id="btn-expand-all" onclick="expandAllCards()" title="Expand all 7 sections" style="padding:4px 10px; font-size:0.75rem;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><polyline points="6 9 12 15 18 9"/></svg>
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-expand-all" onclick="expandAllCards()"
+            title="Expand all 7 sections" style="padding:4px 10px; font-size:0.75rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
             <span>Expand All</span>
           </button>
-          <button type="button" class="btn btn-secondary btn-sm" id="btn-collapse-all" onclick="collapseAllCards()" title="Collapse all sections" style="padding:4px 10px; font-size:0.75rem;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><polyline points="18 15 12 9 6 15"/></svg>
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-collapse-all" onclick="collapseAllCards()"
+            title="Collapse all sections" style="padding:4px 10px; font-size:0.75rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+              <polyline points="18 15 12 9 6 15" />
+            </svg>
             <span>Collapse All</span>
           </button>
         </div>
@@ -478,14 +578,22 @@
         <div class="card-header" onclick="toggleCard(this)" title="Click to expand/collapse section">
           <div class="card-header-left">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
             </div>
             <div>
               <h2>Invoice Details & Dates</h2>
               <p>Invoice number, issue & due dates, currency and status</p>
             </div>
           </div>
-          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="6 9 12 15 18 9"/></svg>
+          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
+            height="16">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
 
         <div class="card-body">
@@ -513,12 +621,15 @@
           </div>
 
           <!-- GST & SAC Enable / Disable Toggles -->
-          <div class="toggles-row" style="display:flex; flex-wrap:wrap; gap:16px; padding:10px 14px; background:rgba(0,0,0,0.3); border-radius:var(--radius-sm); border:1px solid #3b4861; margin-top:8px;">
-            <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.84rem; color:#f8fafc; font-weight:600;">
+          <div class="toggles-row"
+            style="display:flex; flex-wrap:wrap; gap:16px; padding:10px 14px; background:rgba(0,0,0,0.3); border-radius:var(--radius-sm); border:1px solid #3b4861; margin-top:8px;">
+            <label
+              style="display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.84rem; color:#f8fafc; font-weight:600;">
               <input type="checkbox" id="check-enable-gst" />
               <span>Enable GST (GSTIN & Tax Breakdown)</span>
             </label>
-            <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.84rem; color:#f8fafc; font-weight:600;">
+            <label
+              style="display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.84rem; color:#f8fafc; font-weight:600;">
               <input type="checkbox" id="check-enable-sac" />
               <span>Enable SAC / HSN Code Column</span>
             </label>
@@ -556,24 +667,33 @@
         <div class="card-header" onclick="toggleCard(this)" title="Click to expand/collapse section">
           <div class="card-header-left">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
             </div>
             <div>
               <h2>Tessux Digital (Agency Profile)</h2>
               <p>Your agency address, GSTIN, PAN and branding</p>
             </div>
           </div>
-          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="6 9 12 15 18 9"/></svg>
+          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
+            height="16">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
 
         <div class="card-body">
-          <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px; background:rgba(0,0,0,0.2); border-radius:var(--radius-sm); border:1px solid var(--border-color);">
+          <div
+            style="display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px; background:rgba(0,0,0,0.2); border-radius:var(--radius-sm); border:1px solid var(--border-color);">
             <div style="display:flex; align-items:center; gap:10px;">
-              <div id="agency-logo-preview-wrap" style="width:36px; height:36px; border-radius:6px; background:#1e293b; border:1px solid #334155; display:flex; align-items:center; justify-content:center; overflow:hidden; flex-shrink:0;">
+              <div id="agency-logo-preview-wrap"
+                style="width:36px; height:36px; border-radius:6px; background:#1e293b; border:1px solid #334155; display:flex; align-items:center; justify-content:center; overflow:hidden; flex-shrink:0;">
                 <svg viewBox="0 0 36 36" fill="none" width="28" height="28">
-                  <path d="M9 13h18v14H9z" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" stroke-linejoin="round"/>
-                  <path d="M9 13l3.5-4h11l3.5 4" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                  <polygon points="16 17 23 20 16 23" fill="#38bdf8"/>
+                  <path d="M9 13h18v14H9z" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" stroke-linejoin="round" />
+                  <path d="M9 13l3.5-4h11l3.5 4" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                  <polygon points="16 17 23 20 16 23" fill="#38bdf8" />
                 </svg>
               </div>
               <div>
@@ -586,7 +706,8 @@
                 Upload
                 <input type="file" id="input-logo-file" accept="image/*" style="display:none;" />
               </label>
-              <button type="button" class="btn btn-secondary btn-sm" id="btn-reset-logo" title="Reset to default logo">Reset</button>
+              <button type="button" class="btn btn-secondary btn-sm" id="btn-reset-logo"
+                title="Reset to default logo">Reset</button>
             </div>
           </div>
 
@@ -597,7 +718,8 @@
             </div>
             <div class="form-group">
               <label for="input-from-tagline">Agency Tagline</label>
-              <input type="text" id="input-from-tagline" class="input-field" placeholder="Digital Marketing • Software & Web • Mobile Apps • Events" />
+              <input type="text" id="input-from-tagline" class="input-field"
+                placeholder="Digital Marketing • Software & Web • Mobile Apps • Events" />
             </div>
           </div>
 
@@ -614,7 +736,8 @@
 
           <div class="form-group">
             <label for="input-from-address">Office Address</label>
-            <input type="text" id="input-from-address" class="input-field" placeholder="Plot 42, Digital Park, Cyber Hills" />
+            <input type="text" id="input-from-address" class="input-field"
+              placeholder="Plot 42, Digital Park, Cyber Hills" />
           </div>
 
           <div class="form-row-3">
@@ -648,8 +771,11 @@
             <input type="text" id="input-from-website" class="input-field" placeholder="www.tessuxdigital.com" />
           </div>
 
-          <button type="button" class="btn btn-secondary btn-sm" id="btn-save-as-default" style="align-self:flex-start; margin-top:4px;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-save-as-default"
+            style="align-self:flex-start; margin-top:4px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
             Save as Default Agency Profile
           </button>
         </div>
@@ -660,21 +786,30 @@
         <div class="card-header" onclick="toggleCard(this)" title="Click to expand/collapse section">
           <div class="card-header-left">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
             </div>
             <div>
               <h2>Billed To (Client / Organization)</h2>
               <p>Client name, brand/company, address & tax ID</p>
             </div>
           </div>
-          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="6 9 12 15 18 9"/></svg>
+          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
+            height="16">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
 
         <div class="card-body">
           <div class="form-row">
             <div class="form-group">
               <label for="input-client-company">Client / Company Name</label>
-              <input type="text" id="input-client-company" class="input-field" placeholder="Apex Media & Tech Solutions" />
+              <input type="text" id="input-client-company" class="input-field"
+                placeholder="Apex Media & Tech Solutions" />
             </div>
             <div class="form-group">
               <label for="input-client-name">Contact Person / Lead</label>
@@ -695,7 +830,8 @@
 
           <div class="form-group">
             <label for="input-client-address">Billing Address</label>
-            <input type="text" id="input-client-address" class="input-field" placeholder="Tower B, Level 6, Tech Park" />
+            <input type="text" id="input-client-address" class="input-field"
+              placeholder="Tower B, Level 6, Tech Park" />
           </div>
 
           <div class="form-row-3">
@@ -731,21 +867,33 @@
         <div class="card-header" onclick="toggleCard(this)" title="Click to expand/collapse section">
           <div class="card-header-left">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <line x1="8" y1="6" x2="21" y2="6" />
+                <line x1="8" y1="12" x2="21" y2="12" />
+                <line x1="8" y1="18" x2="21" y2="18" />
+                <line x1="3" y1="6" x2="3.01" y2="6" />
+                <line x1="3" y1="12" x2="3.01" y2="12" />
+                <line x1="3" y1="18" x2="3.01" y2="18" />
+              </svg>
             </div>
             <div>
               <h2>Deliverables & Scope of Work</h2>
               <p>Tailored for Digital Marketing, Websites, Software, Apps & Events</p>
             </div>
           </div>
-          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="6 9 12 15 18 9"/></svg>
+          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
+            height="16">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
 
         <div class="card-body">
-          
+
           <!-- Category Tabs for Tessux Digital Services -->
           <div>
-            <div style="font-size:0.7rem; color:var(--text-dim); font-weight:700; text-transform:uppercase; margin-bottom:4px;">Select Agency Service Domain:</div>
+            <div
+              style="font-size:0.7rem; color:var(--text-dim); font-weight:700; text-transform:uppercase; margin-bottom:4px;">
+              Select Agency Service Domain:</div>
             <div class="preset-categories" id="preset-category-tabs"></div>
             <div class="presets-bar" id="preset-pills-container"></div>
           </div>
@@ -754,7 +902,10 @@
           <div id="line-items-container" class="line-items-wrapper"></div>
 
           <button type="button" class="btn btn-secondary btn-sm" id="btn-add-item" style="align-self:flex-start;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
             <span>Add Custom Deliverable / Scope</span>
           </button>
         </div>
@@ -765,14 +916,21 @@
         <div class="card-header" onclick="toggleCard(this)" title="Click to expand/collapse section">
           <div class="card-header-left">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <line x1="19" y1="5" x2="5" y2="19" />
+                <circle cx="6.5" cy="6.5" r="2.5" />
+                <circle cx="17.5" cy="17.5" r="2.5" />
+              </svg>
             </div>
             <div>
               <h2>Tax, Discounts & Totals</h2>
               <p>Automatic GST calculations, ad spend/server fees & amount in words</p>
             </div>
           </div>
-          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="6 9 12 15 18 9"/></svg>
+          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
+            height="16">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
 
         <div class="card-body">
@@ -814,7 +972,8 @@
 
           <div class="form-row">
             <div class="form-group">
-              <label for="input-fee-label">Additional Fee Label <span class="hint">Ad Spend / Cloud / Venue</span></label>
+              <label for="input-fee-label">Additional Fee Label <span class="hint">Ad Spend / Cloud /
+                  Venue</span></label>
               <input type="text" id="input-fee-label" class="input-field" value="Cloud / Server / Ad Spend Fees" />
             </div>
             <div class="form-group">
@@ -863,32 +1022,42 @@
         <div class="card-header" onclick="toggleCard(this)" title="Click to expand/collapse section">
           <div class="card-header-left">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+                <line x1="1" y1="10" x2="23" y2="10" />
+              </svg>
             </div>
             <div>
               <h2>Bank Wire & UPI Payment Details</h2>
               <p>Default: State Bank Of India • Aditya A B • GPay/PhonePe: 6383258945</p>
             </div>
           </div>
-          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="6 9 12 15 18 9"/></svg>
+          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
+            height="16">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
 
         <div class="card-body">
           <!-- Official QR Preview & Upload Bar -->
-          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px; background:rgba(0,0,0,0.25); border-radius:var(--radius-sm); border:1px solid var(--border-color); flex-wrap:wrap;">
+          <div
+            style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px; background:rgba(0,0,0,0.25); border-radius:var(--radius-sm); border:1px solid var(--border-color); flex-wrap:wrap;">
             <div style="display:flex; align-items:center; gap:12px;">
-              <img id="qr-preview-thumbnail" src="assets/payment-qr.png" alt="Payment QR" style="width:60px; height:60px; border-radius:4px; object-fit:contain; background:#fff; border:1px solid #cbd5e1; padding:2px;" />
+              <img id="qr-preview-thumbnail" src="assets/payment-qr.png" alt="Payment QR"
+                style="width:60px; height:60px; border-radius:4px; object-fit:contain; background:#fff; border:1px solid #cbd5e1; padding:2px;" />
               <div>
                 <div style="font-size:0.84rem; font-weight:700; color:#fff;">Google Pay / UPI QR (Aditya A B)</div>
                 <div style="font-size:0.72rem; color:var(--text-dim);">Embedded in all PDF and print invoices</div>
               </div>
             </div>
             <div style="display:flex; gap:6px;">
-              <label class="btn btn-secondary btn-sm" style="margin:0; cursor:pointer;" title="Upload custom QR code image">
+              <label class="btn btn-secondary btn-sm" style="margin:0; cursor:pointer;"
+                title="Upload custom QR code image">
                 Upload Custom QR
                 <input type="file" id="input-qr-file" accept="image/*" style="display:none;" />
               </label>
-              <button type="button" class="btn btn-secondary btn-sm" id="btn-reset-qr" title="Reset to official PhonePe QR">Reset QR</button>
+              <button type="button" class="btn btn-secondary btn-sm" id="btn-reset-qr"
+                title="Reset to official PhonePe QR">Reset QR</button>
             </div>
           </div>
 
@@ -940,13 +1109,17 @@
             </div>
           </div>
 
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-top:4px;">
+          <div
+            style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-top:4px;">
             <label style="display:flex; align-items:center; gap:8px; cursor:pointer; color:#fff; font-size:0.8rem;">
               <input type="checkbox" id="check-show-upi" checked />
               <span>Display Payment & QR Block on Invoice</span>
             </label>
-            <button type="button" class="btn btn-secondary btn-sm" id="btn-save-bank-default" title="Save this bank account and QR as permanent default">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><polyline points="20 6 9 17 4 12"/></svg>
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-save-bank-default"
+              title="Save this bank account and QR as permanent default">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
               <span>Save as Default Bank & QR</span>
             </button>
           </div>
@@ -958,25 +1131,36 @@
         <div class="card-header" onclick="toggleCard(this)" title="Click to expand/collapse section">
           <div class="card-header-left">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <polyline points="10 9 9 9 8 9" />
+              </svg>
             </div>
             <div>
               <h2>Milestone Terms, Notes & Signature</h2>
               <p>Agency milestones, IP transfer terms and authorized sign</p>
             </div>
           </div>
-          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="6 9 12 15 18 9"/></svg>
+          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
+            height="16">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
 
         <div class="card-body">
           <div class="form-group">
             <label for="input-notes">Notes to Client</label>
-            <textarea id="input-notes" class="textarea-field" rows="2" placeholder="Thank you for partnering with Tessux Digital!"></textarea>
+            <textarea id="input-notes" class="textarea-field" rows="2"
+              placeholder="Thank you for partnering with Tessux Digital!"></textarea>
           </div>
 
           <div class="form-group">
             <label for="input-terms">Terms & Conditions</label>
-            <textarea id="input-terms" class="textarea-field" rows="3" placeholder="1. Payment is due within 15 days..."></textarea>
+            <textarea id="input-terms" class="textarea-field" rows="3"
+              placeholder="1. Payment is due within 15 days..."></textarea>
           </div>
 
           <div class="form-row">
@@ -986,7 +1170,8 @@
             </div>
             <div class="form-group">
               <label for="input-signatory-title">Designation / Title</label>
-              <input type="text" id="input-signatory-title" class="input-field" placeholder="Director, Tessux Digital" />
+              <input type="text" id="input-signatory-title" class="input-field"
+                placeholder="Director, Tessux Digital" />
             </div>
           </div>
         </div>
@@ -996,10 +1181,10 @@
 
     <!-- RIGHT PREVIEW PANEL (LIVE A4 INVOICE SHEET) -->
     <section class="preview-panel">
-      
+
       <!-- PREVIEW TOOLBAR -->
       <div class="preview-toolbar no-print">
-        
+
         <!-- Template selector -->
         <div class="toolbar-group">
           <span class="toolbar-label">Template:</span>
@@ -1027,14 +1212,26 @@
         <div class="toolbar-group">
           <div class="zoom-controls">
             <button type="button" class="zoom-btn" id="btn-zoom-out" title="Zoom Out">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                <line x1="8" y1="11" x2="14" y2="11" />
+              </svg>
             </button>
             <span class="zoom-level" id="zoom-level-text">100%</span>
             <button type="button" class="zoom-btn" id="btn-zoom-in" title="Zoom In">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                <line x1="11" y1="8" x2="11" y2="14" />
+                <line x1="8" y1="11" x2="14" y2="11" />
+              </svg>
             </button>
             <button type="button" class="zoom-btn" id="btn-zoom-fit" title="Fit to Screen">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+                <path
+                  d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+              </svg>
             </button>
           </div>
         </div>
@@ -1061,16 +1258,25 @@
     <div class="modal-card modal-history-card">
       <div class="modal-header">
         <div style="display:flex; align-items:center; gap:10px;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" style="color:#818cf8;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"
+            style="color:#818cf8;">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
           <h3 style="margin:0; font-size:1.1rem; color:#fff;">Invoices Manager & History</h3>
         </div>
         <div style="display:flex; align-items:center; gap:8px;">
           <button type="button" class="btn btn-primary btn-sm" id="btn-modal-create-new" title="Create a new invoice">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 5v14M5 12h14"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+              <path d="M12 5v14M5 12h14" />
+            </svg>
             <span>+ New Invoice</span>
           </button>
           <button type="button" class="btn btn-secondary btn-icon btn-sm modal-close-btn" title="Close">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
           </button>
         </div>
       </div>
@@ -1084,8 +1290,14 @@
         <!-- SEARCH & STATUS FILTERS ROW -->
         <div class="crud-filter-row">
           <div class="search-input-wrap" style="flex:1; min-width:200px; position:relative;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" class="search-input-icon" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-dim); pointer-events:none;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="text" id="history-search-input" class="input-field" placeholder="Search by client, project, PO or invoice #..." style="padding-left:36px;" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"
+              class="search-input-icon"
+              style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-dim); pointer-events:none;">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input type="text" id="history-search-input" class="input-field"
+              placeholder="Search by client, project, PO or invoice #..." style="padding-left:36px;" />
           </div>
           <div class="crud-status-tabs" id="history-status-filters">
             <button type="button" class="crud-filter-btn active" data-status="all">All</button>
@@ -1102,19 +1314,32 @@
         </div>
       </div>
 
-      <div class="modal-footer" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+      <div class="modal-footer"
+        style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
         <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-          <button type="button" class="btn btn-secondary btn-sm" id="btn-export-backup" title="Export all invoices as JSON">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-export-backup"
+            title="Export all invoices as JSON">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
             <span>Backup JSON</span>
           </button>
           <label class="btn btn-secondary btn-sm" style="margin:0; cursor:pointer;" title="Restore invoices from JSON">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="17 8 12 3 7 8" />
+              <line x1="12" y1="3" x2="12" y2="15" />
+            </svg>
             <span>Restore JSON</span>
             <input type="file" id="input-import-backup" accept=".json" style="display:none;" />
           </label>
-          <button type="button" class="btn btn-danger btn-sm" id="btn-clear-all-invoices" title="Delete all stored invoices">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          <button type="button" class="btn btn-danger btn-sm" id="btn-clear-all-invoices"
+            title="Delete all stored invoices">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+              <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+            </svg>
             <span>Clear All</span>
           </button>
         </div>
@@ -1131,16 +1356,25 @@
       <div class="modal-header">
         <h3>Agency Data & Hosting Info</h3>
         <button type="button" class="btn btn-secondary btn-icon btn-sm modal-close-btn" title="Close">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
         </button>
       </div>
       <div class="modal-body" style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">
-        <p><strong>100% Client-Side & Private:</strong> All invoices and company profiles are stored locally in your browser. No sensitive financial information or client data is sent to any external server.</p>
-        <p><strong>Tailored for Digital Agencies:</strong> Optimized for Digital Marketing, Websites, Software, Apps, and Event Planning with milestones, retainers, and duration units.</p>
-        <p><strong>One-Click Hosting:</strong> You can host this application completely free on <em>Vercel</em>, <em>Netlify</em>, or <em>GitHub Pages</em>. See the included <code>README.md</code> for one-step instructions.</p>
+        <p><strong>100% Client-Side & Private:</strong> All invoices and company profiles are stored locally in your
+          browser. No sensitive financial information or client data is sent to any external server.</p>
+        <p><strong>Tailored for Digital Agencies:</strong> Optimized for Digital Marketing, Websites, Software, Apps,
+          and Event Planning with milestones, retainers, and duration units.</p>
+        <p><strong>One-Click Hosting:</strong> You can host this application completely free on <em>Vercel</em>,
+          <em>Netlify</em>, or <em>GitHub Pages</em>. See the included <code>README.md</code> for one-step instructions.
+        </p>
         <hr style="border-color:var(--border-color); margin:8px 0;" />
         <div style="display:flex; flex-direction:column; gap:8px;">
-          <button type="button" class="btn btn-secondary btn-sm" id="btn-settings-backup" onclick="document.getElementById('btn-export-backup').click();">Download Complete Data Backup (JSON)</button>
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-settings-backup"
+            onclick="document.getElementById('btn-export-backup').click();">Download Complete Data Backup
+            (JSON)</button>
         </div>
       </div>
       <div class="modal-footer">
@@ -1157,13 +1391,14 @@
       <div class="auth-brand">
         <div class="auth-logo-svg-wrap">
           <svg viewBox="0 0 44 44" fill="none" width="44" height="44">
-            <rect width="44" height="44" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-            <path d="M11 16h22v17H11z" fill="#0f172a" stroke="#38bdf8" stroke-width="2" stroke-linejoin="round"/>
-            <path d="M11 16l4-5h14l4 5" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <polygon points="19 21 27 25 19 29" fill="#38bdf8"/>
-            <line x1="15" y1="11" x2="17.5" y2="16" stroke="#94a3b8" stroke-width="1.6"/>
-            <line x1="22" y1="11" x2="24.5" y2="16" stroke="#94a3b8" stroke-width="1.6"/>
-            <line x1="29" y1="11" x2="31.5" y2="16" stroke="#94a3b8" stroke-width="1.6"/>
+            <rect width="44" height="44" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+            <path d="M11 16h22v17H11z" fill="#0f172a" stroke="#38bdf8" stroke-width="2" stroke-linejoin="round" />
+            <path d="M11 16l4-5h14l4 5" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <polygon points="19 21 27 25 19 29" fill="#38bdf8" />
+            <line x1="15" y1="11" x2="17.5" y2="16" stroke="#94a3b8" stroke-width="1.6" />
+            <line x1="22" y1="11" x2="24.5" y2="16" stroke="#94a3b8" stroke-width="1.6" />
+            <line x1="29" y1="11" x2="31.5" y2="16" stroke="#94a3b8" stroke-width="1.6" />
           </svg>
         </div>
         <div class="auth-brand-text">
@@ -1182,18 +1417,31 @@
         <div class="form-group" style="margin-bottom:14px;">
           <label for="auth-username">Username or Email</label>
           <div class="auth-input-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="auth-field-icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <input type="text" id="auth-username" class="input-field auth-input" placeholder="admin" autocomplete="username" required />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"
+              class="auth-field-icon">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            <input type="text" id="auth-username" class="input-field auth-input" placeholder="admin"
+              autocomplete="username" required />
           </div>
         </div>
 
         <div class="form-group" style="margin-bottom:16px;">
           <label for="auth-password">Password</label>
           <div class="auth-input-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="auth-field-icon"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            <input type="password" id="auth-password" class="input-field auth-input" placeholder="••••••••" autocomplete="current-password" required />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"
+              class="auth-field-icon">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <input type="password" id="auth-password" class="input-field auth-input" placeholder="••••••••"
+              autocomplete="current-password" required />
             <button type="button" class="btn-toggle-pwd" id="btn-toggle-pwd" title="Show / Hide Password">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
             </button>
           </div>
         </div>
@@ -1206,18 +1454,14 @@
         </div>
 
         <button type="submit" class="btn btn-primary auth-submit-btn" id="btn-auth-submit">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+            <polyline points="10 17 15 12 10 7" />
+            <line x1="15" y1="12" x2="3" y2="12" />
+          </svg>
           <span>Unlock Invoice Studio</span>
         </button>
       </form>
-
-      <div class="auth-demo-hint">
-        <div class="auth-hint-top">
-          <span>Admin Access Credentials</span>
-          <button type="button" class="btn-quick-fill" id="btn-auth-quickfill">Auto Fill</button>
-        </div>
-        <div class="auth-cred-pill">User: <b>admin</b> &nbsp;|&nbsp; Pass: <b>Admin@87454786</b></div>
-      </div>
     </div>
   </div>
 
@@ -1228,11 +1472,17 @@
     <div class="modal-card" style="max-width:540px;">
       <div class="modal-header">
         <div style="display:flex; align-items:center; gap:8px;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" style="color:#10b981;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"
+            style="color:#10b981;">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
           <h3 style="margin:0;">Security & Data Vault</h3>
         </div>
         <button type="button" class="btn btn-secondary btn-icon btn-sm modal-close-btn" title="Close">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
         </button>
       </div>
 
@@ -1242,7 +1492,10 @@
           <div class="sec-info-row">
             <span style="color:var(--text-dim);">Vault Encryption Status:</span>
             <span style="color:#10b981; font-weight:700; display:inline-flex; align-items:center; gap:6px;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
               ACTIVE (AES-256 + SHA-256)
             </span>
           </div>
@@ -1261,9 +1514,13 @@
         </div>
 
         <!-- Change Password Section -->
-        <div style="background:#0b1120; border:1px solid #334155; border-radius:var(--radius-sm); padding:14px; margin-bottom:14px;">
+        <div
+          style="background:#0b1120; border:1px solid #334155; border-radius:var(--radius-sm); padding:14px; margin-bottom:14px;">
           <h4 style="margin:0 0 10px 0; font-size:0.86rem; color:#f1f5f9; display:flex; align-items:center; gap:6px;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
             Change Admin Credentials
           </h4>
           <div class="form-group" style="margin-bottom:8px;">
@@ -1286,9 +1543,13 @@
         </div>
 
         <!-- Session Auto-Lock Settings -->
-        <div style="background:#0b1120; border:1px solid #334155; border-radius:var(--radius-sm); padding:14px; margin-bottom:14px;">
+        <div
+          style="background:#0b1120; border:1px solid #334155; border-radius:var(--radius-sm); padding:14px; margin-bottom:14px;">
           <h4 style="margin:0 0 8px 0; font-size:0.86rem; color:#f1f5f9; display:flex; align-items:center; gap:6px;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
             Auto-Lock on Inactivity
           </h4>
           <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
@@ -1305,17 +1566,30 @@
         <!-- Secure Encrypted Export / Import -->
         <div style="background:#0b1120; border:1px solid #334155; border-radius:var(--radius-sm); padding:14px;">
           <h4 style="margin:0 0 8px 0; font-size:0.86rem; color:#f1f5f9; display:flex; align-items:center; gap:6px;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
             Encrypted Backup Vault
           </h4>
-          <p style="font-size:0.76rem; color:var(--text-dim); margin:0 0 10px 0;">Export all invoices, bank account, and agency profiles into an encrypted <code>.tessux-vault</code> package.</p>
+          <p style="font-size:0.76rem; color:var(--text-dim); margin:0 0 10px 0;">Export all invoices, bank account, and
+            agency profiles into an encrypted <code>.tessux-vault</code> package.</p>
           <div style="display:flex; gap:8px; flex-wrap:wrap;">
-            <button type="button" class="btn btn-secondary btn-sm" id="btn-export-encrypted-vault" style="display:inline-flex; align-items:center; gap:6px;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-export-encrypted-vault"
+              style="display:inline-flex; align-items:center; gap:6px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
               <span>Export Encrypted Vault</span>
             </button>
-            <label class="btn btn-secondary btn-sm" style="margin:0; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            <label class="btn btn-secondary btn-sm"
+              style="margin:0; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+              </svg>
               <span>Restore Encrypted Vault</span>
               <input type="file" id="input-import-encrypted-vault" accept=".json,.tessux-vault" style="display:none;" />
             </label>
@@ -1324,8 +1598,12 @@
       </div>
 
       <div class="modal-footer" style="display:flex; justify-content:space-between; align-items:center;">
-        <button type="button" class="btn btn-danger btn-sm" id="btn-sec-logout" style="display:inline-flex; align-items:center; gap:6px;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <button type="button" class="btn btn-danger btn-sm" id="btn-sec-logout"
+          style="display:inline-flex; align-items:center; gap:6px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+          </svg>
           <span>Lock Studio Now</span>
         </button>
         <button type="button" class="btn btn-primary btn-sm modal-close-btn">Done</button>
@@ -1342,4 +1620,5 @@
   <script src="assets/payment-qr-base64.js"></script>
   <script src="app.js"></script>
 </body>
+
 </html>
