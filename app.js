@@ -137,7 +137,7 @@
       try {
         const parsed = JSON.parse(raw);
         if (parsed.username && parsed.passwordHash) return parsed;
-      } catch (e) {}
+      } catch (e) { }
     }
     // Default initial admin credentials: admin / Admin@87454786 (also accepts admin123)
     return {
@@ -248,7 +248,7 @@
       if (sess && sess.expiresAt && sess.expiresAt > Date.now()) {
         return sess;
       }
-    } catch (e) {}
+    } catch (e) { }
     return null;
   }
 
@@ -293,7 +293,7 @@
     const legacyHash = sha256('admin123');
 
     const isMatch = (inputUser === creds.username.toLowerCase() && inputHash === creds.passwordHash) ||
-                    (inputUser === 'admin' && (inputHash === targetHash || inputHash === legacyHash));
+      (inputUser === 'admin' && (inputHash === targetHash || inputHash === legacyHash));
 
     if (isMatch) {
       failedAttempts = 0;
@@ -695,7 +695,7 @@
           return { ...parsedDraft };
         }
       }
-    } catch (e) {}
+    } catch (e) { }
     return {
       id: "inv_" + Date.now(),
       template: "tessux",
@@ -2537,7 +2537,7 @@
         <div style="text-align:center; padding:36px 16px; color:var(--text-dim); background:#0b1120; border-radius:var(--radius-sm); border:1px dashed #334155;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36" style="margin:0 auto 10px auto; color:#64748b; display:block;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           <p style="font-weight:600; color:#e2e8f0; margin-bottom:4px;">No Invoices Found</p>
-          <p style="font-size:0.78rem;">${q || stFilter !== 'all' ? 'Try adjusting your search query or status filter.' : 'Click "+ New Invoice" or "Save" on the top bar to record invoices.'}</p>
+          <p style="font-size:0.78rem;">${q || stFilter !== 'all' ? 'Try adjusting your search query or status filter.' : 'Click "New Invoice" or "Save" on the top bar to record invoices.'}</p>
         </div>
       `;
       return;
